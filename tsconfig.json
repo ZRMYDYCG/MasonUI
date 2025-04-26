@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
-    "module": "ESNext", // 打包模块类型ESNext
-    "declaration": false, // 默认不要声明文件
-    "noImplicitAny": true, // 允许未声明类型的变量
-    "removeComments": true, // 删除注释
-    "moduleResolution": "node", // 模块解析类型 按照 node 规则解析
-    "esModuleInterop": true, // 支持 es6, commonjs
-    "jsx": "preserve", // 保留jsx
-    "noLib": false, // 不处理类库
     "target": "ES6", // 遵循 es6
-    "sourceMap": true, // 生成 source-map
+    "jsx": "preserve", // 保留jsx
     "lib": [ // 编译时用的库
       "ESNext",
       "DOM"
     ],
-    "allowSyntheticDefaultImports": true, // 允许没有导出的模块中导入
+    "noLib": false, // 不处理类库
     "experimentalDecorators": true, // 启用装饰器
-    "forceConsistentCasingInFileNames": true, // 强制区分大小写
+    "module": "ESNext", // 打包模块类型ESNext
+    "moduleResolution": "node", // 模块解析类型 按照 node 规则解析
     "resolveJsonModule": true, // 解析 json 模块
     "strict": true, // 启用严格模式
+    "noImplicitAny": true, // 允许未声明类型的变量
+    "declaration": false, // 默认不要声明文件
+    "removeComments": true, // 删除注释
+    "sourceMap": true, // 生成 source-map
+    "allowSyntheticDefaultImports": true, // 允许没有导出的模块中导入
+    "esModuleInterop": true, // 支持 es6, commonjs
+    "forceConsistentCasingInFileNames": true, // 强制区分大小写
     "skipLibCheck": true // 跳过类库检测
   },
   "exclude": [ // 排除掉的文件

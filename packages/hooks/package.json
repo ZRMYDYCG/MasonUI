@@ -2,6 +2,9 @@
   "name": "@mason-ui/hooks",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
   "main": "index.ts",
   "module": "index.ts",
   "unpkg": "index.js",
@@ -9,8 +12,5 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  }
 }
