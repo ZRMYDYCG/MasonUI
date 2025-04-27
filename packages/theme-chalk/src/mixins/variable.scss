@@ -3,7 +3,7 @@
 @use 'sass:color';
 @use 'sass:list';
 
-@use './function.scss' as *;
+@use 'function' as *;
 
 $sceneTypes: primary, success, warning, danger, error, info;
 $sizeTypes: '', small, large;

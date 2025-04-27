@@ -1,5 +1,5 @@
-@use 'variable.scss' as *;
-@use 'variable-mixins.scss' as *;
+@use 'variable' as *;
+@use 'variable-mixins' as *;
 
 :root {
   @include set-variable('color-white', $color-white);

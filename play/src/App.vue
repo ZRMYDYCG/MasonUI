@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useNamespace } from '@mason-ui/hooks/index.ts'
 
-const n = useNamespace('button')
 </script>
 
 <template>
-  <button :class="[n.b()]" />
+  <div>
+    <m-button>Hello World</m-button>
+  </div>
 </template>
 
 <style scoped>
