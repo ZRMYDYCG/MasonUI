@@ -4,10 +4,10 @@
 
 <template>
   <div>
-    <m-button>Hello World</m-button>
+    <m-button>Button</m-button>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

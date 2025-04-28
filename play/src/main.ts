@@ -1,8 +1,9 @@
 import type { Plugin } from 'vue'
 import * as components from '@mason-ui/components'
 import { createApp } from 'vue'
-
 import App from './App.vue'
+
+import './style.css'
 import '@mason-ui/theme-chalk/src/index.scss'
 
 const app = createApp(App)
