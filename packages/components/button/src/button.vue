@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useNamespace } from '@mason-ui/hooks/index.ts'
+import { useNamespace } from '@mason-ui/hooks/index'
 
 defineOptions({
   name: 'MButton',
