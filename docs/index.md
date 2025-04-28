@@ -1,24 +1,9 @@
----
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
+<MainPage />
 
-hero:
-  name: "MasonUI"
-  text: "基于 vue3 + typescript 的传统组件库"
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+<MemberPage />
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
----
+<script setup>
+import MainPage from '/.vitepress/components/mainPage.vue';
+import MemberPage from '/.vitepress/components/memberPage.vue';
+</script>
+
