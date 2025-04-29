@@ -9,6 +9,7 @@ import { getNav } from './config/getNav'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'MasonUI',
+  base: '/docs/',
   description: '基于 vue3 + typescript 的传统组件库',
   head: getHead(),
   themeConfig: {
