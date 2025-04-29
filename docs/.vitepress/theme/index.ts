@@ -1,6 +1,7 @@
 import type { AppContext, Plugin } from 'vue'
 import * as components from '@mason-ui/components'
 import Theme from 'vitepress/theme'
+// @ts-ignore
 import MyLayout from './Layout.vue'
 import './index.scss'
 import '@mason-ui/theme-chalk/src/index.scss'

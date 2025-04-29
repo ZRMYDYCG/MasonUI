@@ -10,11 +10,11 @@ export default defineConfig({
     logo: '/image/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '指南', link: '/' },
-      { text: '设计', link: '/' },
-      { text: '组件', link: '/' },
-      { text: '指令', link: '/' },
-      { text: '联系我们', link: '/' },
+      { text: '指南', link: '/guide' },
+      { text: '设计', link: '/design' },
+      { text: '组件', link: '/components/button' },
+      { text: '指令', link: '/directives' },
+      { text: '联系我们', link: '/contact' },
     ],
 
     sidebar: [

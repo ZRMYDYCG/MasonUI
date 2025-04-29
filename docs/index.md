@@ -1,6 +1,6 @@
-<MainPage />
+<BannerPage />
 
 <script setup>
-import MainPage from '/.vitepress/components/mainPage.vue';
+import BannerPage from '/.vitepress/components/banner-page.vue';
 </script>
 

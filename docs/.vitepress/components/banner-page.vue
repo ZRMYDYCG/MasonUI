@@ -37,11 +37,12 @@ const team = [
     <section class="hero">
       <div class="container">
         <div class="hero-illustration">
-          <svg viewBox="0 0 800 600" fill="none">
-            <path d="M400 50L750 200H50L400 50Z" fill="#316ac5" class="dark:fill-[#6b9fed]" />
-            <path d="M200 450L400 550L600 450" stroke="#316ac5" class="dark:stroke-[#6b9fed]" stroke-width="4" />
-            <circle cx="400" cy="300" r="150" fill="#316ac5" class="dark:fill-[#6b9fed]" />
-          </svg>
+          <!--          <svg viewBox="0 0 800 600" fill="none"> -->
+          <!--            <path d="M400 50L750 200H50L400 50Z" fill="#316ac5" class="dark:fill-[#6b9fed]" /> -->
+          <!--            <path d="M200 450L400 550L600 450" stroke="#316ac5" class="dark:stroke-[#6b9fed]" stroke-width="4" /> -->
+          <!--            <circle cx="400" cy="300" r="150" fill="#316ac5" class="dark:fill-[#6b9fed]" /> -->
+          <!--          </svg> -->
+          <img src="/image/logo.svg" alt="Mason UI">
         </div>
         <h1 class="hero-title">
           Mason UI
@@ -50,12 +51,12 @@ const team = [
           现代、高效、可定制的Vue 3组件解决方案
         </p>
         <div class="action-buttons">
-          <div class="button primary" @click="navigate('/guide')">
+          <a class="button primary" href="/guide">
             快速开始
-          </div>
-          <div class="button secondary" @click="navigate('/components')">
+          </a>
+          <a class="button secondary" href="/components">
             组件列表
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -125,18 +126,25 @@ const team = [
 .hero {
   text-align: center;
   padding: 8rem 0;
-  background: #ffffff;
+  background-color: #f7fafc;
+  background-image: url('https://www.ncsyrj.com/new_oa/static/svg/login-bg-35918cc2.svg');
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .dark .hero {
-  background: #1a1a1a;
+  background: #1a1a1a url('https://www.ncsyrj.com/new_oa/static/svg/login-bg-35918cc2.svg') no-repeat right top;
+  background-size: cover;
 }
 
-.hero-illustration svg {
-  width: 600px;
-  max-width: 90%;
+.hero-illustration {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: auto;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
 }
 
 .hero-title {
@@ -180,6 +188,8 @@ const team = [
   overflow: hidden;
   transform: translateY(0);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  color: inherit;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -199,6 +209,7 @@ const team = [
 
 .primary:hover {
   background: linear-gradient(135deg, #3b75d1 0%, #2553a5 100%);
+  color: white;
 }
 
 .dark .primary {
