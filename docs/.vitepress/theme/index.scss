@@ -29,3 +29,34 @@
     color: #ded7f0;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 针对Webkit内核的浏览器，如Chrome、Safari等 */
+*::-webkit-scrollbar {
+  width: 10px; /* 滚动条的宽度 */
+  height: 10px; /* 滚动条的高度 */
+}
+
+/* 滚动条的轨道 */
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+/* 滑块悬停效果 */
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Firefox浏览器的滚动条样式设置 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+}

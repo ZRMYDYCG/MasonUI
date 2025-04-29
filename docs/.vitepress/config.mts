@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { getHead } from './config/getHead'
+import { getComponentsSidebar, getDesignSidebar, getDirectives, getGuideSidebar, getHead, getNav } from './config'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -9,18 +9,13 @@ export default defineConfig({
   themeConfig: {
     logo: '/image/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: '指南', link: '/guide' },
-      { text: '设计', link: '/design' },
-      { text: '组件', link: '/components/button' },
-      { text: '指令', link: '/directives' },
-      { text: '联系我们', link: '/contact' },
-    ],
-
-    sidebar: [
-
-    ],
-
+    nav: getNav(),
+    sidebar: {
+      '/guide/': getGuideSidebar(),
+      '/design/': getDesignSidebar(),
+      '/components/': getComponentsSidebar(),
+      '/directives/': getDirectives(),
+    } as any,
     socialLinks: [
       { icon: 'github', link: '' },
     ],
