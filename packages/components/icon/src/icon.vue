@@ -7,7 +7,7 @@ import { computed } from 'vue'
 import { iconProps } from './type'
 
 defineOptions({
-  name: 'NIcon',
+  name: 'MIcon',
 })
 const { name, color, size } = defineProps(iconProps)
 const n = useNamespace('icon')
