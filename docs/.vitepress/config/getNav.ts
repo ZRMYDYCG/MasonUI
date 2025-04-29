@@ -6,6 +6,6 @@ export function getNav(): DefaultTheme.NavItem[] {
     { text: '设计', link: '/design/color/' },
     { text: '组件', link: '/components/button/' },
     { text: '指令', link: '/directives/ripple/' },
-    { text: '联系我们', link: '/contact/ ' },
+    { text: '联系我们', link: '/contact/' },
   ]
 }

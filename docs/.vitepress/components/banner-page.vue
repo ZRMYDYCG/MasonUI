@@ -37,11 +37,6 @@ const team = [
     <section class="hero">
       <div class="container">
         <div class="hero-illustration">
-          <!--          <svg viewBox="0 0 800 600" fill="none"> -->
-          <!--            <path d="M400 50L750 200H50L400 50Z" fill="#316ac5" class="dark:fill-[#6b9fed]" /> -->
-          <!--            <path d="M200 450L400 550L600 450" stroke="#316ac5" class="dark:stroke-[#6b9fed]" stroke-width="4" /> -->
-          <!--            <circle cx="400" cy="300" r="150" fill="#316ac5" class="dark:fill-[#6b9fed]" /> -->
-          <!--          </svg> -->
           <img src="/image/logo.svg" alt="Mason UI">
         </div>
         <h1 class="hero-title">
@@ -51,10 +46,10 @@ const team = [
           现代、高效、可定制的Vue 3组件解决方案
         </p>
         <div class="action-buttons">
-          <a class="button primary" href="/guide">
+          <a class="button primary" href="/guide/basic/">
             快速开始
           </a>
-          <a class="button secondary" href="/components">
+          <a class="button secondary" href="components/button/">
             组件列表
           </a>
         </div>
