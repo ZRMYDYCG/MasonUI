@@ -13,6 +13,7 @@ export default defineConfig({
       { text: '指南', link: '/' },
       { text: '设计', link: '/' },
       { text: '组件', link: '/' },
+      { text: '指令', link: '/' },
       { text: '联系我们', link: '/' },
     ],
 
