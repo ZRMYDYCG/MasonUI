@@ -1,5 +1,10 @@
 import { defineConfig } from 'vitepress'
-import { getComponentsSidebar, getDesignSidebar, getDirectives, getGuideSidebar, getHead, getNav } from './config'
+import { getComponentsSidebar } from './config/getComponentsSidebar'
+import { getDesignSidebar } from './config/getDesignSidebar'
+import { getDirectives } from './config/getDirectives'
+import { getGuideSidebar } from './config/getGuideSidebar'
+import { getHead } from './config/getHead'
+import { getNav } from './config/getNav'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
