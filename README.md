@@ -1,4 +1,4 @@
-<p align="center" style="font-size: 40px; font-weight: bold; background: linear-gradient(45deg, #ff1c68, #f3a8ff, #ffffff, #89ff94, #ff1c68, #f3a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mason • UI</p>
+<h2 align="center" style="font-size: 40px; font-weight: bold; background: linear-gradient(45deg, #ff1c68, #f3a8ff, #ffffff, #89ff94, #ff1c68, #f3a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Mason • UI</h2>
 
 <div align="center">
   <a href="https://github.com/ZRMYDYCG/Mason">
@@ -15,6 +15,9 @@
   <img src="https://img.shields.io/badge/Vite-6.2.3-646CFF.svg?style=flat-square&logo=vite&logoColor=white" />
   <img src="https://img.shields.io/badge/Vitest-3.0.9-FCC72B.svg?style=flat-square&logo=vitest" />
 </p>
+
+![image](https://github.com/user-attachments/assets/51f6971d-926b-47dd-928a-89ad7f82480f)
+
 
 ## 功能特点
 
