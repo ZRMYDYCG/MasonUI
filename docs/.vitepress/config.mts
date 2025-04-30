@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { vitepressDemoPlugin } from 'vitepress-demo-plugin'
 import { getComponentsSidebar } from './config/getComponentsSidebar'
 import { getDesignSidebar } from './config/getDesignSidebar'
 import { getDirectives } from './config/getDirectives'
@@ -12,6 +13,11 @@ export default defineConfig({
   base: '/',
   description: '基于 vue3 + typescript 的传统组件库',
   head: getHead(),
+  markdown: {
+    config(md) {
+      md.use(vitepressDemoPlugin)
+    },
+  },
   themeConfig: {
     logo: '/image/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
