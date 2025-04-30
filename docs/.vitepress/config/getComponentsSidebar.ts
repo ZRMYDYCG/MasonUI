@@ -18,7 +18,6 @@ export function getComponentsSidebar(): DefaultTheme.Sidebar {
     {
       text: 'Form 表单组件',
       items: [
-
       ],
     },
     {
@@ -36,7 +35,7 @@ export function getComponentsSidebar(): DefaultTheme.Sidebar {
     {
       text: 'Feedback 反馈组件',
       items: [
-
+        { text: 'Message 全局提示', link: '/components/message/' },
       ],
     },
   ]

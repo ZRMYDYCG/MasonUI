@@ -1,6 +1,8 @@
 # Icon 图标
 
-图标组件用于展示一些图标。
+✅ 可控样式：自由设定图标的颜色和大小
+
+✅ 无障碍支持：默认适配屏幕阅读器和其他辅助技术，确保图标信息对所有用户可见
 
 ## 基础使用
 
@@ -30,6 +32,16 @@
 ## Icon Emits
 
 <NullData message="暂无定义事件" />
+
+## Icon Slots
+
+<NullData message="暂无插槽" />
+
+
+## Icon Expose
+
+<NullData message="暂无暴露接口" />
+
 
 <script>
 import NullData from '../../../docs/.vitepress/components/null-data.vue'
