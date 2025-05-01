@@ -1,5 +1,6 @@
 import type { AppContext, Plugin } from 'vue'
 import * as components from '@mason-ui/components'
+import { Message } from '@mason-ui/components/message'
 import Theme from 'vitepress/theme'
 // @ts-ignore
 import MyLayout from './Layout.vue'
@@ -19,5 +20,7 @@ export default {
         }
       }
     }
+    // messageProvider
+    app.config.globalProperties.$message = Message
   },
 }

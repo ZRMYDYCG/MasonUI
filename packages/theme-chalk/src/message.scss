@@ -1,22 +1,46 @@
-@use 'mixins' as *;
-
-@include b(message) {
-  background-color: var(--m-color-white);
-  padding: var(--m-space-small) var(--m-space-large);
+.message-container {
   position: fixed;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999;
-  margin: 20px auto 0;
-  transition: all 0.3s;
-  border-radius: var(--m-border-radius-large);
-  font-size: var(--m-font-size);
-  color: var(--m-color-info-light-1);
-  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
-  display: flex;
-  align-items: center;
+  z-index: 1000;
+}
 
-  .m-icon {
-    margin-right: var(--m-space-small);
-  }
+.message-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-list-move {
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* 进入动画 */
+.message-list-enter-active {
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* 离开动画 */
+.message-list-leave-active {
+  transition: all 0.3s cubic-bezier(0.6, -0.3, 0.74, 0.05);
+  position: absolute;  // 防止布局抖动
+  left: 0;
+  right: 0;
+}
+
+.message-list-enter-from {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.95);
+}
+
+.message-list-leave-to {
+  opacity: 0;
+  transform: translateY(-40px) scale(0.98);
+}
+
+/* 当有新项插入时保持的初始状态 */
+.message-list-enter-active {
+  position: relative;
 }

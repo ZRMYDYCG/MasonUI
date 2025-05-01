@@ -1,11 +1,15 @@
-<script setup lang="ts">
-import MMessage from '@mason-ui/components/message/src/message.vue'
+<script setup>
+import { getCurrentInstance } from 'vue'
+
+const { $message } = getCurrentInstance().appContext.config.globalProperties
+
+function showMessage() {
+  $message.success('成功！')
+}
 </script>
 
 <template>
-  <MMessage type="success" message="This is a success message" />
+  <button @click="showMessage">
+    显示消息
+  </button>
 </template>
-
-<style scoped>
-
-</style>
