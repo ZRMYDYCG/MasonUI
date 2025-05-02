@@ -20,11 +20,16 @@ class MessageManager {
 
   private render() {
     const vnodes = instances.map((instance) => {
+      const originalOnClose = instance.props?.onClose
+
       return createVNode(
         MessageComponent,
         {
           ...instance.props,
-          onClose: () => this.remove(instance),
+          onClose: () => {
+            originalOnClose?.()
+            this.remove(instance)
+          },
         },
         instance.children,
       )
@@ -57,14 +62,22 @@ class MessageManager {
   add(options: MessageOptions) {
     const id = `message_${seed++}`
 
-    const vnode = createVNode(
+    let vnode: VNode
+
+    const handleClose = () => {
+      // 先执行用户回调
+      options.onClose?.()
+      // 再移除实例
+      this.remove(vnode)
+    }
+
+    vnode = createVNode(
       MessageComponent,
       {
-        // 合并默认值
         duration: 3000,
         ...options,
         key: id,
-        onClose: () => this.remove(vnode),
+        onClose: handleClose, // 使用合并后的关闭处理
       },
       () => options.content,
     )
