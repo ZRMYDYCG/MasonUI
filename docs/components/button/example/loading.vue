@@ -7,7 +7,7 @@
     <MButton loading>
       加载中...
     </MButton>
-    <MButton type="primary" loading loading-icon="LoadingCircle">
+    <MButton type="primary" loading loading-icon="LoadingDot">
       自定义加载图标
     </MButton>
   </div>

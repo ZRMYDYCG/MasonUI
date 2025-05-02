@@ -18,6 +18,7 @@ export function getComponentsSidebar(): DefaultTheme.Sidebar {
     {
       text: 'Form 表单组件',
       items: [
+        { text: 'Input 输入框', link: '/components/input/' },
       ],
     },
     {
