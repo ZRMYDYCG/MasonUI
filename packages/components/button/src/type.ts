@@ -1,20 +1,43 @@
-import type { ExtractPropTypes, PropType } from 'vue'
+import type { Component, ComputedRef, Ref } from 'vue'
 
-export const buttonShapes = ['round', 'circle'] as const
-export type ButtonShapeType = typeof buttonShapes[number]
+export type ButtonType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
+export type ButtonSize = 'large' | 'default' | 'small'
 
-export const buttonTypes = ['plain', 'text', 'link', 'dashed'] as const
-export type ButtonTypeType = typeof buttonTypes[number]
+export interface ButtonProps {
+  tag?: string | Component
+  type?: ButtonType
+  size?: ButtonSize
+  disabled?: boolean
+  loading?: boolean
+  icon?: string
+  circle?: boolean
+  plain?: boolean
+  round?: boolean
+  loadingIcon?: string
+  autoFocus?: boolean
+  useThrottle?: boolean
+  throttleDuration?: number
+}
 
-export const buttonProps = {
-  disabled: Boolean,
-  loading: Boolean,
-  shape: {
-    type: String as PropType<ButtonShapeType>,
-  },
-  type: {
-    type: String as PropType<ButtonTypeType>,
-  },
-} as const
+export interface ButtonGroupProps {
+  size?: ButtonSize
+  type?: ButtonType
+  disabled?: boolean
+}
 
-export type ButtonType = ExtractPropTypes<typeof buttonProps>
+export interface ButtonGroupContext {
+  size?: ButtonSize
+  type?: ButtonType
+  disabled?: boolean
+}
+
+export interface ButtonEmits {
+  (e: 'click', val: MouseEvent): void
+}
+
+export interface ButtonInstance {
+  ref: Ref<HTMLButtonElement | void>
+  disabled: ComputedRef<boolean>
+  size: ComputedRef<ButtonSize | ''>
+  type: ComputedRef<ButtonType | ''>
+}

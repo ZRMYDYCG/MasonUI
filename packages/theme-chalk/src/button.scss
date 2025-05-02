@@ -1,2 +1,125 @@
 @use 'sass:map';
 @use 'mixins' as *;
+
+.m-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid var(--m-border-color);
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background-color: var(--m-color-white);
+  color: var(--m-font-color);
+  //gap: 5px;
+  // 防止被 flex 容器垂直拉伸
+  align-self: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &--primary {
+    background-color: var(--m-color-primary);
+    border-color: var(--m-color-primary);
+    color: var(--m-color-white);
+  }
+
+  &--success {
+    background-color: var(--m-color-success);
+    border-color: var(--m-color-success);
+    color: var(--m-color-white);
+  }
+
+  &--info {
+    background-color: var(--m-color-info);
+    border-color: var(--m-color-info);
+    color: var(--m-color-white);
+  }
+
+  &--warning {
+    background-color: var(--m-color-warning);
+    border-color: var(--m-color-warning);
+    color: var(--m-color-white);
+  }
+
+  &--danger {
+    background-color: var(--m-color-danger);
+    border-color: var(--m-color-danger);
+    color: var(--m-color-white);
+  }
+
+  &--large {
+    padding: 14px 22px;
+    font-size: 16px;
+  }
+
+  &--small {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  &.is-round {
+    border-radius: 20px;
+  }
+
+  &.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+  }
+
+  &.is-plain {
+    background-color: var(--m-color-white);
+    &:not(.is-disabled) {
+      &.m-button--primary {
+        color: var(--m-color-primary);
+        border-color: var(--m-color-primary);
+      }
+      &.m-button--success {
+        color:var(--m-color-success);
+        border-color:var(--m-color-success);
+      }
+      &.m-button--info {
+        color: var(--m-color-info);
+        border-color: var(--m-color-info);
+      }
+      &.m-button--warning {
+        color: var(--m-color-warning);
+        border-color: var(--m-color-warning);
+      }
+      &.m-button--danger {
+        color: var(--m-color-danger);
+        border-color: var(--m-color-danger);
+      }
+    }
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &__icon {
+    margin-right: 6px;
+  }
+}
+
+.m-button-group {
+  display: inline-flex;
+  gap: 8px;
+
+  .m-button {
+    border-radius: 0;
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}
