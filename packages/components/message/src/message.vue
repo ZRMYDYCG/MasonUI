@@ -8,6 +8,7 @@ const props = defineProps<{
   content: string
   duration?: number
   onClose?: () => void
+  showClose?: boolean
 }>()
 
 const visible = ref(true)
@@ -70,7 +71,7 @@ onBeforeUnmount(() => {
   >
     <span class="message__icon"><MIcon :name="iconComponent" size="12" /></span>
     <span class="message__content">{{ content }}</span>
-    <button class="message__close" @click="handleClose">
+    <button v-if="showClose" class="message__close" @click="handleClose">
       <MIcon name="Close" size="12" />
     </button>
   </div>

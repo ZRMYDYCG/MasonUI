@@ -1,5 +1,5 @@
 import type { VNode } from 'vue'
-import type { MessageOptions } from './src/type'
+import type { MessageOptions, MessageType } from './src/type'
 import { useNamespace } from '@mason-ui/hooks'
 import { createVNode, render, TransitionGroup } from 'vue'
 import MessageComponent from './src/message.vue'
@@ -56,9 +56,12 @@ class MessageManager {
 
   add(options: MessageOptions) {
     const id = `message_${seed++}`
+
     const vnode = createVNode(
       MessageComponent,
       {
+        // 合并默认值
+        duration: 3000,
         ...options,
         key: id,
         onClose: () => this.remove(vnode),
@@ -83,16 +86,34 @@ class MessageManager {
 const manager = new MessageManager()
 
 export const Message = {
-  success: (content: string, duration = 3000) => {
-    return manager.add({ type: 'success', content, duration })
+  success(arg: string | MessageOptions, duration?: number) {
+    return handleMessage('success', arg, duration)
   },
-  error: (content: string, duration = 3000) => {
-    return manager.add({ type: 'error', content, duration })
+
+  error(arg: string | MessageOptions, duration?: number) {
+    return handleMessage('error', arg, duration)
   },
-  warning: (content: string, duration = 3000) => {
-    return manager.add({ type: 'warning', content, duration })
+
+  info(arg: string | MessageOptions, duration?: number) {
+    return handleMessage('info', arg, duration)
   },
-  info: (content: string, duration = 3000) => {
-    return manager.add({ type: 'info', content, duration })
+
+  warning(arg: string | MessageOptions, duration?: number) {
+    return handleMessage('warning', arg, duration)
   },
+}
+
+function handleMessage(
+  type: MessageType,
+  arg: string | MessageOptions,
+  duration?: number,
+): string {
+  const options = typeof arg === 'string'
+    ? { content: arg, duration }
+    : arg
+
+  return manager.add({
+    ...options,
+    type,
+  })
 }
