@@ -32,19 +32,29 @@ function togglePasswordVisible() {
 
 function handleInput() {
   emits('update:modelValue', innerValue.value)
+  emits('input', innerValue.value)
 }
 
-function handleFocus() {
+function handleChange() {
+  emits('change', innerValue.value)
+}
+
+function handleFocus(event: FocusEvent) {
   isFocus.value = true
+  emits('focus', event)
 }
 
-function handleBlur() {
+function handleBlur(event: FocusEvent) {
   isFocus.value = false
+  emits('blur', event)
 }
 
 function clear() {
   innerValue.value = ''
   emits('update:modelValue', '')
+  emits('clear')
+  emits('input', '')
+  emits('change', '')
 }
 
 watch(
@@ -82,7 +92,7 @@ watch(
         <span v-if="$slots.prefix" class="m-input__prefix">
           <slot name="prefix" />
         </span>
-        <input v-model="innerValue" :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" class="m-input__inner" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur">
+        <input v-model="innerValue" :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" class="m-input__inner" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur" @change="handleChange">
         <!--   suffix slot -->
         <span v-if="$slots.suffix || showClear || showPasswordArea" class="m-input__suffix" @click="clear" @mousedown.prevent>
           <slot name="suffix" />
