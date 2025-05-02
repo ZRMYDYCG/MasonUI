@@ -5,7 +5,7 @@ const value = ref('')
 </script>
 
 <template>
-  <m-input v-model="value" />
+  <m-input v-model="value" type="text" clearable />
 </template>
 
 <style scoped>

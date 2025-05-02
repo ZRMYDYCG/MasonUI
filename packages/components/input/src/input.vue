@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { inputEmits, inputProps } from './type'
 import { useNamespace } from '@mason-ui/hooks'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
+import MIcon from '../../icon/src/icon.vue'
 
 defineOptions({
   name: 'MInput',
@@ -17,8 +18,26 @@ const ns = useNamespace('input')
 
 const innerValue = ref(props.modelValue)
 
+const isFocus = ref(false)
+const showClear = computed(() => {
+  return props.clearable && !props.disabled && !!innerValue.value && isFocus.value
+})
+
 function handleInput() {
   emits('update:modelValue', innerValue.value)
+}
+
+function handleFocus() {
+  isFocus.value = true
+}
+
+function handleBlur() {
+  isFocus.value = false
+}
+
+function clear() {
+  innerValue.value = ''
+  emits('update:modelValue', '')
 }
 
 watch(
@@ -40,6 +59,7 @@ watch(
       { 'is-append': $slots.append },
       { 'is-prefix': $slots.prefix },
       { 'is-suffix': $slots.suffix },
+      { 'is-focus': isFocus },
     ]"
   >
     <!--  input  -->
@@ -55,10 +75,11 @@ watch(
         <span v-if="$slots.prefix" class="m-input__prefix">
           <slot name="prefix" />
         </span>
-        <input v-model="innerValue" class="m-input__inner" :type="type" :disabled="disabled">
+        <input v-model="innerValue" class="m-input__inner" :type="type" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur">
         <!--   suffix slot -->
-        <span v-if="$slots.suffix" class="m-input__suffix">
+        <span v-if="$slots.suffix || showClear" class="m-input__suffix" @click="clear" @mousedown.prevent>
           <slot name="suffix" />
+          <MIcon v-if="showClear" name="CloseCircle" class="m-input__clear" />
         </span>
       </div>
       <!--  append slot  -->
@@ -70,7 +91,7 @@ watch(
     </template>
     <!--  textarea  -->
     <template v-else>
-      <textarea v-model="innerValue" class="m-textarea__wrapper" :disabled="disabled" @input="handleInput" />
+      <textarea v-model="innerValue" class="m-textarea__wrapper" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
     </template>
   </div>
 </template>
