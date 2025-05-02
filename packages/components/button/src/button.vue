@@ -90,7 +90,7 @@ defineExpose({
     <div
       class="m-button__icon"
       :style="{
-        marginRight: $slots.default && $slots.icon ? '8px' : '0',
+        marginRight: ($slots.default && $slots.icon) || (icon && $slots.default) || (loading && $slots.default) ? '8px' : '0',
       }"
     >
       <template v-if="loading">

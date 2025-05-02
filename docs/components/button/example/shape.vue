@@ -3,7 +3,7 @@
 
 <template>
   <div style="display: flex;gap: 8px;">
-    <MButton circle icon="user" />
+    <MButton circle icon="LoadingArc" />
     <MButton round>
       圆角按钮
     </MButton>
