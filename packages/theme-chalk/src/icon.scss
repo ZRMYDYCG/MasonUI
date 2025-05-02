@@ -4,4 +4,17 @@
   display: inline-flex;
   width: 1em;
   height: 1em;
+
+  @include m(spin) {
+    animation: m-icon-spin 1s infinite linear;
+  }
+}
+
+@keyframes m-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -12,6 +12,10 @@ export const iconProps = {
   size: {
     type: [Number, String] as PropType<number | string>,
   },
+  spin: {
+    type: Boolean,
+    default: false,
+  },
 } as const
 
 export type IconType = ExtractPropTypes<typeof iconProps>

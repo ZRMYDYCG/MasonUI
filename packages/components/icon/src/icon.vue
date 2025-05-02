@@ -9,7 +9,7 @@ import { iconProps } from './type'
 defineOptions({
   name: 'MIcon',
 })
-const { name, color, size } = defineProps(iconProps)
+const { name, color, size, spin } = defineProps(iconProps)
 const n = useNamespace('icon')
 const svg = computed(() => {
   return Svgs[name]
@@ -28,7 +28,7 @@ const style = computed<CSSProperties>(() => {
 
 <template>
   <i
-    :class="n.b()"
+    :class="[n.b(), spin ? n.m('spin') : '']"
     :style="style"
   >
     <component :is="svg" />
