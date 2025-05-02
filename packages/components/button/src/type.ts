@@ -32,7 +32,7 @@ export interface ButtonGroupContext {
 }
 
 export interface ButtonEmits {
-  (e: 'click', val: MouseEvent): void
+  (e: 'throttleClick', val: MouseEvent): void
 }
 
 export interface ButtonInstance {
