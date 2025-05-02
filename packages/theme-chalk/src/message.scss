@@ -1,6 +1,8 @@
-.message-container {
+@use 'mixins' as *;
+
+@include b(message) {
   position: fixed;
-  top: 20px;
+  top: 15px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -11,23 +13,69 @@
   flex-direction: column-reverse;
   align-items: center;
   gap: 8px;
+
+  .message {
+    display: flex;
+    align-items: center;
+    padding: var(--m-space-small) var(--m-space-large);
+    margin-bottom: 8px;
+    border-radius: var(--m-border-radius-small);
+    background: var(--m-color-white);
+    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+    transition: all 0.5s ease;
+
+    &--success {
+      color: var(--m-color-success);
+      background-color: var(--m-color-success-light-6);
+      border: 1px solid var(--m-color-success);
+    }
+
+    &--error {
+      color: var(--m-color-error);
+      background-color: var(--m-color-error-light-6);
+      border: 1px solid var(--m-color-error);
+    }
+
+    &--warning {
+      color: var(--m-color-warning);
+      background-color: var(--m-color-warning-light-6);
+      border: 1px solid var(--m-color-warning);
+    }
+
+    &--info {
+      color: var(--m-color-info);
+      background-color: var(--m-color-info-light-6);
+      border: 1px solid var(--m-color-info);
+    }
+
+    &__icon {
+      margin-right: var(--m-space-small);
+    }
+
+    &__close {
+      margin-left: var(--m-space-small);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      padding: 0;
+      font-size: var(--m-font-size);
+    }
+  }
 }
 
 .message-list-move {
-  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform var(--m-duration-slower) cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 /* 进入动画 */
 .message-list-enter-active {
-  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transition: all var(--m-duration-slower) cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 /* 离开动画 */
 .message-list-leave-active {
-  transition: all 0.3s cubic-bezier(0.6, -0.3, 0.74, 0.05);
-  position: absolute;  // 防止布局抖动
-  left: 0;
-  right: 0;
+  transition: all var(--m-duration-slower) cubic-bezier(0.6, -0.3, 0.74, 0.05);
 }
 
 .message-list-enter-from {
@@ -37,10 +85,5 @@
 
 .message-list-leave-to {
   opacity: 0;
-  transform: translateY(-40px) scale(0.98);
-}
-
-/* 当有新项插入时保持的初始状态 */
-.message-list-enter-active {
-  position: relative;
+  transform: scale(0.98);
 }

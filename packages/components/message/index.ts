@@ -1,22 +1,25 @@
 import type { VNode } from 'vue'
 import type { MessageOptions } from './src/type'
+import { useNamespace } from '@mason-ui/hooks'
 import { createVNode, render, TransitionGroup } from 'vue'
 import MessageComponent from './src/message.vue'
 
 let seed = 1
 const instances: VNode[] = []
 
+const ns = useNamespace('message')
+
 class MessageManager {
   private container: HTMLElement | null = null
 
   constructor() {
     this.container = document.createElement('div')
-    this.container.className = 'message-container'
+    this.container.className = ns.b()
     document.body.appendChild(this.container)
   }
 
   private render() {
-    const vnodes = instances.map((instance, index) => {
+    const vnodes = instances.map((instance) => {
       return createVNode(
         MessageComponent,
         {
@@ -45,7 +48,7 @@ class MessageManager {
 
     if (!this.container) {
       this.container = document.createElement('div')
-      this.container.className = 'message-container'
+      this.container.className = ns.b()
       document.body.appendChild(this.container)
     }
     render(transitionGroup, this.container)
