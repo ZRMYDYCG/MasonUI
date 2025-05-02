@@ -87,13 +87,20 @@ defineExpose({
     :autofocus="autoFocus"
     @click="handleClick"
   >
-    <template v-if="loading">
-      <MIcon :name="loadingIcon ? loadingIcon : 'LoadingArc'" spin />
-    </template>
-    <MIcon v-if="icon && !loading" :name="icon" />
-    <template v-if="!icon && $slots.icon">
-      <slot name="icon" />
-    </template>
+    <div
+      class="m-button__icon"
+      :style="{
+        marginRight: $slots.default && $slots.icon ? '8px' : '0',
+      }"
+    >
+      <template v-if="loading">
+        <MIcon :name="loadingIcon ? loadingIcon : 'LoadingArc'" spin />
+      </template>
+      <MIcon v-if="icon && !loading" :name="icon" />
+      <template v-if="!icon && $slots.icon">
+        <slot name="icon" />
+      </template>
+    </div>
     <span class="m-button__content">
       <slot />
     </span>
