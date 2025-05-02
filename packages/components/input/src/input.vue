@@ -22,6 +22,13 @@ const isFocus = ref(false)
 const showClear = computed(() => {
   return props.clearable && !props.disabled && !!innerValue.value && isFocus.value
 })
+const passwordVisible = ref(false)
+const showPasswordArea = computed(() => {
+  return props.showPassword && !props.disabled && !!innerValue.value
+})
+function togglePasswordVisible() {
+  passwordVisible.value = !passwordVisible.value
+}
 
 function handleInput() {
   emits('update:modelValue', innerValue.value)
@@ -75,11 +82,13 @@ watch(
         <span v-if="$slots.prefix" class="m-input__prefix">
           <slot name="prefix" />
         </span>
-        <input v-model="innerValue" class="m-input__inner" :type="type" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur">
+        <input v-model="innerValue" :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" class="m-input__inner" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur">
         <!--   suffix slot -->
-        <span v-if="$slots.suffix || showClear" class="m-input__suffix" @click="clear" @mousedown.prevent>
+        <span v-if="$slots.suffix || showClear || showPasswordArea" class="m-input__suffix" @click="clear" @mousedown.prevent>
           <slot name="suffix" />
           <MIcon v-if="showClear" name="CloseCircle" class="m-input__clear" />
+          <MIcon v-if="showPasswordArea && passwordVisible" name="CloseCircle" class="m-input__password" @click="togglePasswordVisible" />
+          <MIcon v-if="showPasswordArea && !passwordVisible" name="CloseCircle" class="m-input__password" @click="togglePasswordVisible" />
         </span>
       </div>
       <!--  append slot  -->
