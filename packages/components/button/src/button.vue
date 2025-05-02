@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ButtonEmits, ButtonProps } from './type'
 import { throttle } from 'lodash-es'
-import { computed, inject, ref } from 'vue'
+import { computed, inject, ref, watch } from 'vue'
 import MIcon from '../../icon/src/icon.vue'
 import { BUTTON_GROUP_CTX_KEY } from './context.ts'
 
@@ -28,15 +28,34 @@ const disabled = computed(() => props.disabled || groupContext?.disabled || fals
 const buttonRef = ref<HTMLButtonElement>()
 
 // 节流处理
+const throttledEmit = ref(
+  throttle(
+    (e: MouseEvent) => emit('throttleClick', e),
+    props.throttleDuration,
+    { leading: true, trailing: false },
+  ),
+)
+
+watch(
+  () => props.throttleDuration,
+  (newDuration) => {
+    throttledEmit.value = throttle(
+      (e: MouseEvent) => emit('throttleClick', e),
+      newDuration,
+      { leading: true, trailing: false },
+    )
+  },
+)
+
 function handleClick(e: MouseEvent) {
   if (disabled.value || props.loading)
     return
 
   if (props.useThrottle) {
-    throttle(() => emit('click', e), props.throttleDuration)()
+    throttledEmit.value(e)
   }
   else {
-    emit('click', e)
+    emit('throttleClick', e)
   }
 }
 
