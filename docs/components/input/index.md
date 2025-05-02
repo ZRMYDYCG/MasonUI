@@ -12,6 +12,11 @@
 一些原生属性的支持
 :::
 
+
+## 基础使用
+
+<demo vue="./example/base.vue" />
+
 ## slots
 
 prepend append prefix suffix
