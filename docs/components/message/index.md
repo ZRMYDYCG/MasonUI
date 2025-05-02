@@ -13,3 +13,23 @@
 ## 基础使用
 
 <demo vue="./example/base.vue" />
+
+## 自定义持续时间
+
+<demo vue="./example/duration.vue" />
+
+## 手动关闭
+
+<demo vue="./example/closeable.vue" />
+
+## 自定义关闭回调
+
+<demo vue="./example/close-callback.vue" />
+
+## 悬停暂停关闭
+
+<demo vue="./example/hover-pause.vue" />
+
+## 多条消息堆叠
+
+<demo vue="./example/queue.vue" />
