@@ -1,13 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue'
 
-const value = ref('')
+const input1 = ref('')
 </script>
 
 <template>
-  <m-input v-model="value" type="text" clearable />
+  <MInput v-model="input1" placeholder="请输入内容" />
 </template>
-
-<style scoped>
-
-</style>
