@@ -1,0 +1,165 @@
+$input-height: 32px;
+$input-font-size: 14px;
+$input-color: #606266;
+$input-border-color: #dcdfe6;
+$input-radius: 4px;
+$input-bg-color: #ffffff;
+$input-disabled-bg: #f5f7fa;
+$input-disabled-color: #c0c4cc;
+$input-focus-border: #409eff;
+$input-focus-shadow: rgba(64, 158, 255, 0.2);
+
+.m-input {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  font-size: $input-font-size;
+  transition: border-color 0.2s;
+
+  // 不同尺寸
+  &--medium {
+    $input-height: 36px;
+  }
+  &--small {
+    $input-height: 28px;
+    font-size: 13px;
+  }
+  &--mini {
+    $input-height: 24px;
+    font-size: 12px;
+  }
+
+  // 禁用状态
+  &.is-disabled {
+    .m-input__inner,
+    .m-textarea__wrapper {
+      background-color: $input-disabled-bg;
+      color: $input-disabled-color;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $input-border-color; // 保持原有边框颜色
+      }
+    }
+  }
+
+  // 焦点状态
+  &.is-focus {
+    .m-input__inner {
+      border-color: $input-focus-border;
+      box-shadow: 0 0 0 2px $input-focus-shadow;
+    }
+  }
+
+  // 前后插槽样式
+  &__prepend,
+  &__append {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    background-color: #f5f7fa;
+    border: 1px solid $input-border-color;
+    white-space: nowrap;
+  }
+  &__prepend {
+    border-right: 0;
+    border-radius: $input-radius 0 0 $input-radius;
+  }
+  &__append {
+    border-left: 0;
+    border-radius: 0 $input-radius $input-radius 0;
+  }
+
+  // 输入框容器
+  &__wrapper {
+    position: relative;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  // 输入框本体
+  &__inner {
+    width: 100%;
+    height: $input-height;
+    padding: 0 12px;
+    line-height: $input-height;
+    color: $input-color;
+    background-color: $input-bg-color;
+    border: 1px solid $input-border-color;
+    border-radius: $input-radius;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: lighten($input-focus-border, 10%);
+    }
+    &[readonly] {
+      background-color: $input-disabled-bg;
+    }
+  }
+
+  // 前后缀
+  &__prefix,
+  &__suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $input-disabled-color;
+    display: flex;
+    align-items: center;
+  }
+  &__prefix {
+    left: 8px;
+    ~ .m-input__inner {
+      padding-left: 28px;
+    }
+  }
+  &__suffix {
+    right: 8px;
+    cursor: pointer;
+    ~ .m-input__inner {
+      padding-right: 28px;
+    }
+  }
+
+  // 清除按钮
+  &__clear,
+  &__password {
+    margin-left: 4px;
+    color: $input-disabled-color;
+    &:hover {
+      color: $input-color;
+    }
+  }
+
+  // 文本域
+  .m-textarea__wrapper {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px 12px;
+    line-height: 1.5;
+    color: $input-color;
+    border: 1px solid $input-border-color;
+    border-radius: $input-radius;
+    resize: vertical;
+    &:focus {
+      border-color: $input-focus-border;
+      box-shadow: 0 0 0 2px $input-focus-shadow;
+    }
+  }
+}
+
+// 组合型输入框（带前后插槽）
+.m-input.is-prepend {
+  .m-input__inner {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+.m-input.is-append {
+  .m-input__inner {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

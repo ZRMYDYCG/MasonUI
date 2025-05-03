@@ -1,22 +1,29 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import type { inputEmits, inputProps } from './type'
 import { useNamespace } from '@mason-ui/hooks'
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, useAttrs, watch } from 'vue'
 import MIcon from '../../icon/src/icon.vue'
 
 defineOptions({
   name: 'MInput',
+  inheritAttrs: false,
 })
 
 const props = withDefaults(defineProps<inputProps>(), {
   type: 'text',
+  autocomplete: 'off',
 })
 
 const emits = defineEmits<inputEmits>()
 
+const attrs = useAttrs()
+
 const ns = useNamespace('input')
 
 const innerValue = ref(props.modelValue)
+
+const inputRef = ref() as Ref<HTMLInputElement | HTMLTextAreaElement>
 
 const isFocus = ref(false)
 const showClear = computed(() => {
@@ -28,6 +35,11 @@ const showPasswordArea = computed(() => {
 })
 function togglePasswordVisible() {
   passwordVisible.value = !passwordVisible.value
+}
+
+async function keepFocus() {
+  await nextTick()
+  inputRef.value.focus()
 }
 
 function handleInput() {
@@ -56,6 +68,10 @@ function clear() {
   emits('input', '')
   emits('change', '')
 }
+
+defineExpose({
+  ref: inputRef,
+})
 
 watch(
   () => props.modelValue,
@@ -92,13 +108,13 @@ watch(
         <span v-if="$slots.prefix" class="m-input__prefix">
           <slot name="prefix" />
         </span>
-        <input v-model="innerValue" :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" class="m-input__inner" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur" @change="handleChange">
+        <input ref="inputRef" v-bind="attrs" v-model="innerValue" :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" class="m-input__inner" :disabled="disabled" :placeholder="placeholder" :autocomplete="autocomplete" :auto-focus="autoFocus" :form="form" :readonly="readonly" @input="handleInput" @focus="handleFocus" @blur="handleBlur" @change="handleChange">
         <!--   suffix slot -->
-        <span v-if="$slots.suffix || showClear || showPasswordArea" class="m-input__suffix" @click="clear" @mousedown.prevent>
+        <span v-if="$slots.suffix || showClear || showPasswordArea" class="m-input__suffix" @mousedown.prevent @click="keepFocus">
           <slot name="suffix" />
-          <MIcon v-if="showClear" name="CloseCircle" class="m-input__clear" />
-          <MIcon v-if="showPasswordArea && passwordVisible" name="CloseCircle" class="m-input__password" @click="togglePasswordVisible" />
-          <MIcon v-if="showPasswordArea && !passwordVisible" name="CloseCircle" class="m-input__password" @click="togglePasswordVisible" />
+          <MIcon v-if="showClear" name="CloseCircle" class="m-input__clear" @click="clear" />
+          <MIcon v-if="showPasswordArea && passwordVisible" name="EyeClose" class="m-input__password" @click="togglePasswordVisible" />
+          <MIcon v-if="showPasswordArea && !passwordVisible" name="EyeOpen" class="m-input__password" @click="togglePasswordVisible" />
         </span>
       </div>
       <!--  append slot  -->
@@ -110,7 +126,7 @@ watch(
     </template>
     <!--  textarea  -->
     <template v-else>
-      <textarea v-model="innerValue" class="m-textarea__wrapper" :disabled="disabled" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
+      <textarea ref="inputRef" v-bind="attrs" v-model="innerValue" class="m-textarea__wrapper" :disabled="disabled" :placeholder="placeholder" :autocomplete="autocomplete" :auto-focus="autoFocus" :form="form" :readonly="readonly" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
     </template>
   </div>
 </template>
